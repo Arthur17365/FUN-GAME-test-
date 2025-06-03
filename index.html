@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>fast quiz.com</title>
+  <link rel="stylesheet" type="text/css" href="style.css">
+
+  </style>
+</head>
+
+<body>
+  <h1>FAST QUIZ.</h1>
+
+  <form action="cadastro_sucesso.html" method="post">
+    <h2>Cadastro</h2>
+    <label for="nome">Nome:</label>
+    <input type="text" id="nome" name="nome" required>
+
+    <label for="email">E-mail:</label>
+    <input type="email" id="email" name="email" required>
+
+    <label for="senha">Senha:</label>
+    <input type="password" id="senha" name="senha" required>
+
+    <input type="submit" value="Cadastrar">
+  </form>
+
+  <div class="question">
+    <h2>Qual é o país com maior extensão territorial?</h2>
+    <label class="option"><input type="radio" name="q1" onclick="checkAnswer(this, true)"> Rússia</label>
+    <label class="option"><input type="radio" name="q1" onclick="checkAnswer(this, false)"> China</label>
+    <label class="option"><input type="radio" name="q1" onclick="checkAnswer(this, false)"> Estados Unidos</label>
+    <label class="option"><input type="radio" name="q1" onclick="checkAnswer(this, false)"> Canadá</label>
+  </div>
+
+  <div class="question">
+    <h2>Quem pintou a obra "Mona Lisa"?</h2>
+    <label class="option"><input type="radio" name="q2" onclick="checkAnswer(this, false)"> Vincent van Gogh</label>
+    <label class="option"><input type="radio" name="q2" onclick="checkAnswer(this, false)"> Pablo Picasso</label>
+    <label class="option"><input type="radio" name="q2" onclick="checkAnswer(this, true)"> Leonardo da Vinci</label>
+    <label class="option"><input type="radio" name="q2" onclick="checkAnswer(this, false)"> Michelangelo</label>
+  </div>
+
+  <div class="question">
+    <h2>Qual é o elemento químico representado pelo símbolo "O"?</h2>
+    <label class="option"><input type="radio" name="q3" onclick="checkAnswer(this, false)"> Ouro</label>
+    <label class="option"><input type="radio" name="q3" onclick="checkAnswer(this, true)"> Oxigênio</label>
+    <label class="option"><input type="radio" name="q3" onclick="checkAnswer(this, false)"> Ozônio</label>
+    <label class="option"><input type="radio" name="q3" onclick="checkAnswer(this, false)"> Osmônio</label>
+  </div>
+
+  <div class="question">
+    <h2>Qual é o idioma mais falado no mundo?</h2>
+    <label class="option"><input type="radio" name="q4" onclick="checkAnswer(this, false)"> Inglês</label>
+    <label class="option"><input type="radio" name="q4" onclick="checkAnswer(this, false)"> Espanhol</label>
+    <label class="option"><input type="radio" name="q4" onclick="checkAnswer(this, true)"> Mandarim</label>
+    <label class="option"><input type="radio" name="q4" onclick="checkAnswer(this, false)"> Árabe</label>
+  </div>
+
+  <script>
+    function checkAnswer(radio, isCorrect) {
+      const group = radio.name;
+      const options = document.getElementsByName(group);
+      options.forEach(opt => {
+        opt.parentElement.classList.remove('correct', 'incorrect');
+      });
+
+      if (isCorrect) {
+        radio.parentElement.classList.add('correct');
+      } else {
+        radio.parentElement.classList.add('incorrect');
+      }
+    }
+  </script>
+</body>
+
+</html>

@@ -1,16 +1,12 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>fast quiz.com</title>
   <link rel="stylesheet" type="text/css" href="style.css">
-
-  </style>
 </head>
-
 <body>
   <h1>FAST QUIZ.</h1>
 
@@ -60,21 +56,30 @@
     <label class="option"><input type="radio" name="q4" onclick="checkAnswer(this, false)"> Árabe</label>
   </div>
 
+  <div id="feedback" style="margin-top: 20px;"></div>
+
   <script>
     function checkAnswer(radio, isCorrect) {
       const group = radio.name;
       const options = document.getElementsByName(group);
-      options.forEach(opt => {
-        opt.parentElement.classList.remove('correct', 'incorrect');
-      });
+
+      for (let i = 0; i < options.length; i++) {
+        options[i].parentElement.classList.remove('correct', 'incorrect');
+      }
+
+      const feedback = document.getElementById('feedback');
+      feedback.innerHTML = ""; // Limpa feedback anterior
 
       if (isCorrect) {
         radio.parentElement.classList.add('correct');
+        feedback.innerHTML = `<p style="color: green;">✅ Acertou!</p>
+          <img src="https://media.giphy.com/media/111ebonMs90YLu/giphy.gif" alt="Correto" width="150">`;
       } else {
         radio.parentElement.classList.add('incorrect');
+        feedback.innerHTML = `<p style="color: red;">❌ Errou!</p>
+          <img src="https://media.giphy.com/media/26u4cqiYI30juCOGY/giphy.gif" alt="Errado" width="150">`;
       }
     }
   </script>
 </body>
-
 </html>
